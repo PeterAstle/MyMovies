@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMovies.Data\MyMovies.Data.csproj">
-      <Project>{25fe86e8-76b3-4142-9ff0-4bc1c4be9c34}</Project>
+
+      <Project>{25FE86E8-76B3-4142-9FF0-4BC1C4BE9C34}</Project>
+
       <Name>MyMovies.Data</Name>
     </ProjectReference>
   </ItemGroup>

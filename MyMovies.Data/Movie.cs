@@ -42,7 +42,7 @@ namespace MyMovies.Data
 
         [Required]
 
-        public MaturityRating RatingForMaturity { get; set; }
+        public MaturityRating MaturityRating { get; set; }
 
         public virtual List<Favorite> FavList { get; set; }
 
