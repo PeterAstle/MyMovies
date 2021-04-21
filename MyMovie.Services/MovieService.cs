@@ -29,9 +29,9 @@ namespace MyMovie.Services
                 MaturityRating = model.MaturityRating,
                 Rating = model.Rating,
                 WouldWatchAgain = model.WouldWatchAgain,
-                MovieNote = model.Note,
+                Note = model.Note,
                 IsFavorite = model.IsFavorite,
-                CreatedUtc = DateTimeOffset.Now
+                CreatedUtc = DateTimeOffset.UtcNow
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -122,6 +122,30 @@ namespace MyMovie.Services
             }
 
 
+        }
+
+        public bool UpdateMovieByTitle(MovieEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Movie
+                    .Single(e => e.MovieId == model.MovieId && e.OwnerId == _userId);
+
+                entity.MovieTitle = model.MovieTitle;
+                entity.MovieDescription = model.MovieDescription;
+                entity.Genre = model.Genre;
+                entity.Note = model.Note;
+                entity.IsFavorite = model.IsFavorite;
+                entity.Rating = model.Rating;
+                entity.WouldWatchAgain = model.WouldWatchAgain;
+                entity.MaturityRating = model.MaturityRating;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+
+            }
         }
     }
 }
