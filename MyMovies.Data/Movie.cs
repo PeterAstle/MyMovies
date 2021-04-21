@@ -35,7 +35,7 @@ namespace MyMovies.Data
         [Required]
         public MovieGenre Genre { get; set; }
 
-        public string MovieNote { get; set; }
+        public string Note { get; set; }
 
         [Required]
         public bool WouldWatchAgain { get; set; }
