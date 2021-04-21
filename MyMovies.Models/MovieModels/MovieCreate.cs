@@ -14,6 +14,10 @@ namespace MyMovies.Models
         public string MovieTitle { get; set; }
 
         [Required]
+        public string MovieDescription { get; set; }
+
+
+        [Required]
         public MovieGenre Genre { get; set; }
 
         [Required]
@@ -27,6 +31,9 @@ namespace MyMovies.Models
 
         [MaxLength(500, ErrorMessage ="Please limit your note to 500 characters or less.")]
         public string Note { get; set; }
+
+        [Required]
+        public bool IsFavorite { get; set; }
 
     }
 }

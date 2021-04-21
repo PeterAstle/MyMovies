@@ -13,6 +13,9 @@ namespace MyMovies.Models
 
         public string Title { get; set; }
 
+        public string MovieDescription { get; set; }
+
+
         public MovieGenre Genre { get; set; }
 
         public string Note { get; set; }
