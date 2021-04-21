@@ -131,7 +131,7 @@ namespace MyMovie.Services
                 var entity =
                     ctx
                     .Movie
-                    .Single(e => e.MovieId == model.MovieId && e.OwnerId == _userId);
+                    .Single(e => e.MovieTitle == model.MovieTitle && e.OwnerId == _userId);
 
                 entity.MovieTitle = model.MovieTitle;
                 entity.MovieDescription = model.MovieDescription;
