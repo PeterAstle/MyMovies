@@ -14,7 +14,7 @@ namespace MyMovies.Data
         public int RatingId { get; set; }
         [ForeignKey(nameof(Movie))]
         public int MovieId { get; set; }
-        public virtual Movie movie { get; set; }
+        public virtual Movie Movie { get; set; }
         [Required]
         public double Score { get; set; }
     }
