@@ -8,7 +8,6 @@ using MyMovies.Data;
 
 namespace MyMovies.Models.RatingModels
 {
-    
     public class RatingCreate
     {   
         [Required]
