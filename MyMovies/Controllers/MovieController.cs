@@ -73,7 +73,7 @@ namespace MyMovies.Controllers
 
             var service = CreateMovieService();
 
-            if (!service.UpdateMovieByTitle(movie))
+            if (!service.UpdateMovie(movie))
             {
                 return InternalServerError();
             }
