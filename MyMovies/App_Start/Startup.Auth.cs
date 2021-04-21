@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using MyMovies.Providers;
 using MyMovies.Models;
+using MyMovies.Data;
 
 namespace MyMovies
 {
