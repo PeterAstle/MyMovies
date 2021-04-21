@@ -38,5 +38,30 @@ namespace MyMovies.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult Get()
+        {
+            MovieService movieService = CreateMovieService();
+
+            var movies = movieService.GetMovies();
+
+            return Ok(movies);
+
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            MovieService movieService = CreateMovieService();
+
+            var movie = movieService.GetMovieById(id);
+            return Ok(movie);
+        }
+
+        public IHttpActionResult Get(string title)
+        {
+            MovieService movieService = CreateMovieService();
+            var movie = movieService.GetMovieByTitle(title);
+            return Ok(movie);
+        }
     }
 }
