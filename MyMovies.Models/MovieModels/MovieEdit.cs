@@ -11,7 +11,7 @@ namespace MyMovies.Models
     {
         public int MovieId { get; set; }
 
-        public string Title { get; set; }
+        public string MovieTitle { get; set; }
 
         public string MovieDescription { get; set; }
 
