@@ -22,5 +22,6 @@ namespace MyMovies.Data
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset ModifiedUtc { get; set; }
+        public string MovieTitle { get; set; }
     }
 }

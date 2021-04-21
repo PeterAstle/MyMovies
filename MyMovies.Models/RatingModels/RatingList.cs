@@ -10,10 +10,14 @@ namespace MyMovies.Models.RatingModels
 {
    public class RatingList
     {
+        public int RatingId { get; set; }
         [Required]
         public int MovieId { get; set; }
+        public string MovieTitle { get; set; }
         public virtual Movie Movie { get; set; }
         [Required]
         public double Score { get; set; }
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }
