@@ -63,5 +63,22 @@ namespace MyMovies.Controllers
             var movie = movieService.GetMovieByTitle(title);
             return Ok(movie);
         }
+
+        public IHttpActionResult Put(MovieEdit movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var service = CreateMovieService();
+
+            if (!service.UpdateMovieByTitle(movie))
+            {
+                return InternalServerError();
+            }
+
+            return Ok();
+        }
     }
 }
