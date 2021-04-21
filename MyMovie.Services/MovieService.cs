@@ -1,5 +1,6 @@
 ﻿using MyMovies.Data;
 using MyMovies.Models;
+using MyMovies.Models.MovieModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,87 @@ namespace MyMovie.Services
             }
         }
 
+        public IEnumerable<MovieList> GetMovies()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Movie
+                    .Where(e => e.OwnerId == _userId)
+                    .Select(
+                        e =>
+                        new MovieList
+                        {
+                            MovieId = e.MovieId,
+                            MovieTitle = e.MovieTitle,
+                            MovieDescription = e.MovieDescription
+                        }
+                     );
 
+                return query.ToArray();
+            }
+        }
+
+        public MovieDetail GetMovieById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Movie
+                    .Single(e => e.MovieId == id && e.OwnerId == _userId);
+
+                return
+                    new MovieDetail
+                    {
+                        MovieId = entity.MovieId,
+                        MovieTitle = entity.MovieTitle,
+                        MovieDescription = entity.MovieDescription,
+                        Genre = entity.Genre,
+                        MaturityRating = entity.MaturityRating,
+                        Rating = entity.Rating,
+                        WouldWatchAgain = entity.WouldWatchAgain,
+                        Note = entity.Note,
+                        IsFavorite = entity.IsFavorite,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+
+                    };
+            }
+
+
+
+        }
+
+        public MovieDetail GetMovieByTitle(string title)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Movie
+                    .Single(e => e.MovieTitle == title && e.OwnerId == _userId);
+
+                return
+                    new MovieDetail
+                    {
+                        MovieId = entity.MovieId,
+                        MovieTitle = entity.MovieTitle,
+                        MovieDescription = entity.MovieDescription,
+                        Genre = entity.Genre,
+                        MaturityRating = entity.MaturityRating,
+                        Rating = entity.Rating,
+                        WouldWatchAgain = entity.WouldWatchAgain,
+                        Note = entity.Note,
+                        IsFavorite = entity.IsFavorite,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+
+                    };
+            }
+
+
+        }
     }
 }
