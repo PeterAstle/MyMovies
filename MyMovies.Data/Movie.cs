@@ -30,7 +30,7 @@ namespace MyMovies.Data
         public virtual List<Rating> Ratings { get; set; } = new List<Rating>();
 
         [Required]
-        public double MovieRating { get; set; }
+        public double Rating { get; set; }
 
         [Required]
         public MovieGenre Genre { get; set; }
@@ -42,7 +42,7 @@ namespace MyMovies.Data
 
         [Required]
 
-        public MaturityRating RatingForMaturity { get; set; }
+        public MaturityRating MaturityRating { get; set; }
 
         public virtual List<Favorite> FavList { get; set; }
 
