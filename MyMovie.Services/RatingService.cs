@@ -71,5 +71,20 @@ namespace MyMovie.Services
                     };
             }
         }
+        public bool UpdateRating(RatingEdit rating)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Rating
+                        .Single(e => e.RatingId == rating.RatingId && e.OwnerId == _userId);
+                entity.RatingId = rating.RatingId;
+                entity.Score = rating.Score;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
