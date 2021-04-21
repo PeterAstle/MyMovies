@@ -16,6 +16,11 @@ namespace MyMovies.Data
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
         [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
         public double Score { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
+        public DateTimeOffset ModifiedUtc { get; set; }
     }
 }

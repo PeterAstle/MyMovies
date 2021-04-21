@@ -14,6 +14,11 @@ namespace MyMovies.Models.RatingModels
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
         [Required]
+        [Range(0,10)]
         public double Score { get; set; }
+        [Required]
+        public Guid OwnerId { get; set; }
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }
