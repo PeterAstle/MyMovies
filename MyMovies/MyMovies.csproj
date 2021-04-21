@@ -310,9 +310,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyMovie.Services\MyMovie.Services.csproj">
+      <Project>{6E828492-5A78-4F5B-B997-E85DD3FB36E7}</Project>
+      <Name>MyMovie.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MyMovies.Data\MyMovies.Data.csproj">
       <Project>{25FE86E8-76B3-4142-9FF0-4BC1C4BE9C34}</Project>
       <Name>MyMovies.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MyMovies.Models\MyMovies.Models.csproj">
+      <Project>{5C8B2011-01D6-4B9E-8CF2-6917687D86C8}</Project>
+      <Name>MyMovies.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
