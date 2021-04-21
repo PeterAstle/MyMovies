@@ -14,6 +14,9 @@ namespace MyMovies.Models
 
         public string MovieTitle { get; set; }
 
+        public string MovieDescription { get; set; }
+
+
         public MovieGenre MovieGenre { get; set; }
 
         public MaturityRating MaturityRating { get; set; }
