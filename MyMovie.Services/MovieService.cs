@@ -147,5 +147,35 @@ namespace MyMovie.Services
 
             }
         }
+
+        public bool DeleteMovieById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Movie
+                    .Single(e => e.MovieId == id && e.OwnerId == _userId);
+
+                ctx.Movie.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        public bool DeleteMovieByTitle(string title)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Movie
+                    .Single(e => e.MovieTitle == title && e.OwnerId == _userId);
+
+                ctx.Movie.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }
