@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyMovie.Services;
+using MyMovies.Models.RatingModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,15 @@ namespace MyMovies.Controllers
             RatingService ratingService = CreateRatingService();
             var rating = ratingService.GetRatingById(id);
             return Ok(rating);
+        }
+        public IHttpActionResult Post(RatingCreate rating)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateRatingService();
+            if (!service.CreateRating(rating))
+                return InternalServerError();
+            return Ok();
         }
         private RatingService CreateRatingService()
         {
