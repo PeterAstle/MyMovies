@@ -45,7 +45,7 @@ namespace MyMovie.Services
                                 {
                                     MovieTitle = e.MovieTitle,
                                     Score = e.Score,
-                                    CreatedUtc = e.CreatedUtc
+                                    //CreatedUtc = e.CreatedUtc
                                 }
                               );
                 return query.ToArray();
@@ -62,12 +62,12 @@ namespace MyMovie.Services
                 return
                     new RatingList
                     {
-                        RatingId = entity.RatingId,
-                        MovieId = entity.MovieId,
+                        //RatingId = entity.RatingId,
+                        //MovieId = entity.MovieId,
                         MovieTitle = entity.MovieTitle,
                         Score = entity.Score,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        //CreatedUtc = entity.CreatedUtc,
+                        //ModifiedUtc = entity.ModifiedUtc
                     };
             }
         }
