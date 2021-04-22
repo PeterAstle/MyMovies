@@ -86,5 +86,17 @@ namespace MyMovie.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public bool DeleteRating(int ratingId)
+        {
+                using (var ctx = new ApplicationDbContext())
+                {
+                var entity =
+                    ctx
+                        .Rating.Single(e => e.RatingId == ratingId && e.OwnerId == _userId);
+                ctx.Rating.Remove(entity);
+                return ctx.SaveChanges() == 1;
+                }
+            
+        }
     }
 }
