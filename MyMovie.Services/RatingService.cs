@@ -31,5 +31,60 @@ namespace MyMovie.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<RatingList> GetRatings()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Rating
+                        .Where(e => e.OwnerId == _userId)
+                        .Select(
+                            e =>
+                                new RatingList
+                                {
+                                    MovieTitle = e.MovieTitle,
+                                    Score = e.Score,
+                                    CreatedUtc = e.CreatedUtc
+                                }
+                              );
+                return query.ToArray();
+            }
+        }
+        public RatingList GetRatingById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Rating
+                        .Single(e => e.RatingId == id && e.OwnerId == _userId);
+                return
+                    new RatingList
+                    {
+                        RatingId = entity.RatingId,
+                        MovieId = entity.MovieId,
+                        MovieTitle = entity.MovieTitle,
+                        Score = entity.Score,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
+        public bool UpdateRating(RatingEdit rating)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Rating
+                        .Single(e => e.RatingId == rating.RatingId && e.OwnerId == _userId);
+                entity.RatingId = rating.RatingId;
+                entity.Score = rating.Score;
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

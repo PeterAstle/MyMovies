@@ -124,7 +124,7 @@ namespace MyMovie.Services
 
         }
 
-        public bool UpdateMovieByTitle(MovieEdit model)
+        public bool UpdateMovie(MovieEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
