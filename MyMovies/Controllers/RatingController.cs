@@ -42,6 +42,15 @@ namespace MyMovies.Controllers
                 return InternalServerError();
             return Ok();
         }
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateRatingService();
+            if (!service.DeleteRating(id))
+            {
+                return InternalServerError();
+            }
+                return Ok();
+        }
         private RatingService CreateRatingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
