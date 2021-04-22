@@ -33,6 +33,15 @@ namespace MyMovies.Controllers
                 return InternalServerError();
             return Ok();
         }
+        public IHttpActionResult Put(RatingEdit rating)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            var service = CreateRatingService();
+            if (!service.UpdateRating(rating))
+                return InternalServerError();
+            return Ok();
+        }
         private RatingService CreateRatingService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
