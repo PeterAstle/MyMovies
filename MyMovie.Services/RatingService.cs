@@ -21,9 +21,9 @@ namespace MyMovie.Services
             var target =
                 new Rating()
                 {
-                    OwnerId = _userId,
+                    
                     Score = rating.Score,
-                    CreatedUtc = DateTimeOffset.Now
+                    
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -45,7 +45,7 @@ namespace MyMovie.Services
                                 {
                                     MovieTitle = e.MovieTitle,
                                     Score = e.Score,
-                                    CreatedUtc = e.CreatedUtc
+                                    //CreatedUtc = e.CreatedUtc
                                 }
                               );
                 return query.ToArray();
@@ -62,12 +62,12 @@ namespace MyMovie.Services
                 return
                     new RatingList
                     {
-                        RatingId = entity.RatingId,
-                        MovieId = entity.MovieId,
+                        //RatingId = entity.RatingId,
+                        //MovieId = entity.MovieId,
                         MovieTitle = entity.MovieTitle,
                         Score = entity.Score,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
+                        //CreatedUtc = entity.CreatedUtc,
+                        //ModifiedUtc = entity.ModifiedUtc
                     };
             }
         }
@@ -85,6 +85,18 @@ namespace MyMovie.Services
 
                 return ctx.SaveChanges() == 1;
             }
+        }
+        public bool DeleteRating(int ratingId)
+        {
+                using (var ctx = new ApplicationDbContext())
+                {
+                var entity =
+                    ctx
+                        .Rating.Single(e => e.RatingId == ratingId && e.OwnerId == _userId);
+                ctx.Rating.Remove(entity);
+                return ctx.SaveChanges() == 1;
+                }
+            
         }
     }
 }

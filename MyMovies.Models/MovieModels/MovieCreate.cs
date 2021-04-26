@@ -10,6 +10,8 @@ namespace MyMovies.Models
 {
    public class MovieCreate
     {
+        public int MovieId { get; set; }
+
         [Required, MaxLength(25, ErrorMessage ="Titles cannot exceed 25 characters."), MinLength(2, ErrorMessage ="The title will need to be at least 2 characters.")]
         public string MovieTitle { get; set; }
 
