@@ -56,9 +56,14 @@ namespace MyMovies.Data
 
         public DateTimeOffset ModifiedUtc { get; set; }
 
-
-
-
+        /*internal static Movie ParseFromCSV(string line)
+        {
+            var columns = line.Split(',');
+            return new Movie 
+            {
+                imdb
+            };
+        }*/
     }
 
 }
