@@ -34,10 +34,21 @@ namespace MyMovie.Services
                 CreatedUtc = DateTimeOffset.UtcNow
             };
 
+            var rating = new Rating()
+            {
+                MovieId = model.MovieId,
+                Movie = entity,
+                OwnerId = _userId,
+                Score = model.Rating,
+                CreatedUtc = DateTimeOffset.UtcNow,
+                MovieTitle = model.MovieTitle
+            };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Movie.Add(entity);
-                return ctx.SaveChanges() == 1;
+                ctx.Rating.Add(rating);
+                return ctx.SaveChanges() == 2;
             }
         }
 
@@ -124,6 +135,7 @@ namespace MyMovie.Services
 
         }
 
+
         public bool UpdateMovie(MovieEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -143,7 +155,18 @@ namespace MyMovie.Services
                 entity.MaturityRating = model.MaturityRating;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                return ctx.SaveChanges() == 1;
+                var rating =
+                    ctx
+                    .Rating
+                    .Single(e => e.MovieId == entity.MovieId && e.OwnerId == _userId);
+
+                rating.MovieTitle = entity.MovieTitle;
+                rating.Score = entity.Rating;
+                rating.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                
+
+                return ctx.SaveChanges() == 2;
 
             }
         }
