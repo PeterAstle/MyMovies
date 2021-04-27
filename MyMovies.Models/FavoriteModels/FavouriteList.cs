@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyMovies.Models.FavoriteModels
 {
-   public class FavoriteList
+   public class FavouriteList
     {
-
+        public string MovieTitle { get; set; }
+        public bool Check { get; set; }
     }
 }

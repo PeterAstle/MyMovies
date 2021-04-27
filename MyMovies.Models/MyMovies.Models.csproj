@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FavoriteModels\FavouriteDetail.cs" />
-    <Compile Include="FavoriteModels\FavoriteList.cs" />
+    <Compile Include="FavoriteModels\FavouriteList.cs" />
     <Compile Include="MovieModels\MovieCreate.cs" />
     <Compile Include="MovieModels\MovieDetail.cs" />
     <Compile Include="MovieModels\MovieEdit.cs" />
