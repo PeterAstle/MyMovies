@@ -12,7 +12,7 @@ namespace MyMovies.Data
     {
         
             [Key]
-            public int FavId { get; set; }
+            public int FavouriteId { get; set; }
             [ForeignKey(nameof(Movie))]
             public int MovieId { get; set; }
             public virtual Movie Movie { get; set; }
