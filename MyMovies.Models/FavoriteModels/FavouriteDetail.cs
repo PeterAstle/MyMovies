@@ -12,7 +12,7 @@ namespace MyMovies.Models.FavoriteModels
     {
         [Key]
         public int FavouriteID { get; set; }
-        [ForeignKey(nameof(Favourite))]
+        [ForeignKey(nameof(MovieID))]
         public int MovieID { get; set; }
         [Required]
         public string MovieTitle { get; set; }
