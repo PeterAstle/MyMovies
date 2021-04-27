@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace MyMovies.Controllers
 {
-    public class FavoriteController : ApiController
+    public class FavouriteController : ApiController
     {
     }
 }

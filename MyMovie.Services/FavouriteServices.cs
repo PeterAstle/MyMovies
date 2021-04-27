@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MyMovie.Services
 {
-    public class Favorite
+    public class FavouriteServices
     {
         private readonly Guid _userID;
 
-        public FavouriteService(Guid userID)
+        public FavouriteServices(Guid userID)
         {
             _userID = userID;
         }
