@@ -44,11 +44,22 @@ namespace MyMovie.Services
                 MovieTitle = model.MovieTitle
             };
 
+            var fav = new Favourite()
+            {
+                
+                MovieId = model.MovieId,
+                IsFavorite = model.IsFavorite,
+                Movie = entity,
+                OwnerID = _userId
+
+            };
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Movie.Add(entity);
                 ctx.Rating.Add(rating);
-                return ctx.SaveChanges() == 2;
+                ctx.Favourite.Add(fav);
+                return ctx.SaveChanges() == 3;
             }
         }
 

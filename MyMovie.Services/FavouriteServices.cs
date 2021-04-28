@@ -25,7 +25,7 @@ namespace MyMovie.Services
                 {
                     OwnerID = _userID,
                     MovieId = favourite.MovieID,
-                    Check = favourite.Check,
+                    IsFavorite = favourite.Check,
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -48,8 +48,8 @@ namespace MyMovie.Services
                             {
                                 FavouriteID = e.FavouriteID,
                                 MovieId = e.MovieId,
-                                MovieTitle = ctx.Movie.Find(e.MovieId).MovieTitle,
-                                Check = e.Check
+                                MovieTitle = e.Movie.MovieTitle,
+                                Check = e.IsFavorite
                             }
                     );
                 return query.ToArray();
@@ -69,7 +69,7 @@ namespace MyMovie.Services
                         FavouriteID = target.FavouriteID,
                         MovieID = target.MovieId,
                         MovieTitle = ctx.Movie.Find(target.MovieId).MovieTitle,
-                        Check = target.Check
+                        Check = target.IsFavorite
                     };
             }
         }
