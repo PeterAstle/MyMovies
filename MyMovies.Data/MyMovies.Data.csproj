@@ -90,6 +90,10 @@
     <Compile Include="Migrations\202104272009518_OverallMigration01.Designer.cs">
       <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104281833519_integratedCreateMethods.cs" />
+    <Compile Include="Migrations\202104281833519_integratedCreateMethods.Designer.cs">
+      <DependentUpon>202104281833519_integratedCreateMethods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104272009518_OverallMigration01.resx">
       <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104281833519_integratedCreateMethods.resx">
+      <DependentUpon>202104281833519_integratedCreateMethods.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

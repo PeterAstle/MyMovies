@@ -28,5 +28,7 @@ namespace MyMovies.Models
 
         public MaturityRating MaturityRating { get; set; }
 
+        public int IsFavoriteId { get; set; }
+
     }
 }

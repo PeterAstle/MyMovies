@@ -25,6 +25,8 @@ namespace MyMovies.Models
         [Required]
         public MaturityRating MaturityRating { get; set; }
 
+        public int RatingId { get; set; }
+
         [Required, Range(0, 10)]
         public double Rating { get; set; }
 

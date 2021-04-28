@@ -64,22 +64,22 @@ namespace MyMovies.Controllers
             return Ok(movie);
         }
 
-        public IHttpActionResult Put(MovieEdit movie)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+        //public IHttpActionResult Put(MovieEdit movie)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
 
-            var service = CreateMovieService();
+        //    var service = CreateMovieService();
 
-            if (!service.UpdateMovie(movie))
-            {
-                return InternalServerError();
-            }
+        //    if (!service.UpdateMovie(movie))
+        //    {
+        //        return InternalServerError();
+        //    }
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         public IHttpActionResult DeleteById(int id)
         {

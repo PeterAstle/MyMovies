@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyMovies
 
 namespace MyMovie.Services
 {
@@ -20,46 +21,30 @@ namespace MyMovie.Services
 
         public bool CreateMovie(MovieCreate model)
         {
-            var entity = new Movie()
+            var entity = new Movie
             {
                 OwnerId = _userId,
                 MovieTitle = model.MovieTitle,
                 MovieDescription = model.MovieDescription,
-                Genre = model.Genre,
-                MaturityRating = model.MaturityRating,
                 Rating = model.Rating,
-                WouldWatchAgain = model.WouldWatchAgain,
+                Genre = model.Genre,
                 Note = model.Note,
+                WouldWatchAgain = model.WouldWatchAgain,
+                MaturityRating = model.MaturityRating,
                 IsFavorite = model.IsFavorite,
-                CreatedUtc = DateTimeOffset.UtcNow
+                CreatedUtc = DateTime.Now
             };
 
-            var rating = new Rating()
-            {
-                MovieId = model.MovieId,
-                Movie = entity,
-                OwnerId = _userId,
-                Score = model.Rating,
-                CreatedUtc = DateTimeOffset.UtcNow,
-                MovieTitle = model.MovieTitle
-            };
-
-            var fav = new Favourite()
-            {
-                
-                MovieId = model.MovieId,
-                IsFavorite = model.IsFavorite,
-                Movie = entity,
-                OwnerID = _userId
-
-            };
+            
 
             using (var ctx = new ApplicationDbContext())
             {
+
+
+                entity.Ratings.Add(entity.Score);
                 ctx.Movie.Add(entity);
-                ctx.Rating.Add(rating);
-                ctx.Favourite.Add(fav);
-                return ctx.SaveChanges() == 3;
+
+                return ctx.SaveChanges() > 0;
             }
         }
 
@@ -147,40 +132,15 @@ namespace MyMovie.Services
         }
 
 
-        public bool UpdateMovie(MovieEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Movie
-                    .Single(e => e.MovieId == model.MovieId && e.OwnerId == _userId);
+        //public bool UpdateMovie(MovieEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
 
-                entity.MovieTitle = model.MovieTitle;
-                entity.MovieDescription = model.MovieDescription;
-                entity.Genre = model.Genre;
-                entity.Note = model.Note;
-                entity.IsFavorite = model.IsFavorite;
-                entity.Rating = model.Rating;
-                entity.WouldWatchAgain = model.WouldWatchAgain;
-                entity.MaturityRating = model.MaturityRating;
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                var rating =
-                    ctx
-                    .Rating
-                    .Single(e => e.MovieId == entity.MovieId && e.OwnerId == _userId);
 
-                rating.MovieTitle = entity.MovieTitle;
-                rating.Score = entity.Rating;
-                rating.ModifiedUtc = DateTimeOffset.UtcNow;
-
-                
-
-                return ctx.SaveChanges() == 2;
-
-            }
-        }
+        //    }
+        //}
 
         public bool DeleteMovieById(int id)
         {

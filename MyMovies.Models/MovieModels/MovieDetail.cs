@@ -26,7 +26,7 @@ namespace MyMovies.Models
         public bool WouldWatchAgain { get; set; }
 
         public string Note { get; set; }
-
+        public int FavoriteID { get; set; }
         public bool IsFavorite { get; set; }
 
         [Display(Name = "Created")]

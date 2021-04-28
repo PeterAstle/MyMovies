@@ -16,7 +16,7 @@ namespace MyMovies.Data
             G, PG, PG13, R, NC17
         }
 
-    public class Movie
+    public class Movie :Rating
     {
 
         [Key]
