@@ -16,7 +16,7 @@ namespace MyMovies.Data
         [ForeignKey(nameof(Movie))]
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
-        public bool Check { get; set; }
+        public bool IsFavorite { get; set; }
         public Guid OwnerID { get; set; }
     }
 }
