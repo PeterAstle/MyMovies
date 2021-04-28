@@ -18,7 +18,7 @@ namespace MyMovies.Data
 
     public class Movie
     {
-
+        List<Movie> records = new List<Movie>();
         [Key]
         public int MovieId { get; set; }
         [Required]
