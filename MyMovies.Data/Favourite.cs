@@ -6,14 +6,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMovies.Models.FavoriteModels
+namespace MyMovies.Data
 {
-    public class FavouriteDetail
+    public class Favourite
     {
+
         [Key]
         public int FavouriteID { get; set; }
-        public int MovieID { get; set; }
-        public string MovieTitle { get; set; }
+        [ForeignKey(nameof(Movie))]
+        public int MovieId { get; set; }
+        public virtual Movie Movie { get; set; }
         public bool Check { get; set; }
+        public Guid OwnerID { get; set; }
     }
 }

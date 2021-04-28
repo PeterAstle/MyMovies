@@ -1,4 +1,6 @@
 ﻿using MyMovies.Data;
+using MyMovies.Models;
+using MyMovies.Models.FavoriteModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,33 +18,37 @@ namespace MyMovie.Services
             _userID = userID;
         }
 
-        public bool CreateFavourite(FavouriteCreate favourite)
+        public bool CreateFavourite(FavoriteCreate favourite)
         {
             var target =
                 new Favourite()
                 {
+                    OwnerID = _userID,
+                    MovieId = favourite.MovieID,
                     Check = favourite.Check,
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Favourites.Add(target);
+                ctx.Favourite.Add(target);
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<FavouriteListItem> GetFavourites()
+        public IEnumerable<FavouriteList> GetFavourites()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                    .Favourites
+                    .Favourite
                     .Where(e => e.OwnerID == _userID)
                     .Select(
                         e =>
-                            new FavouriteListItem
+                            new FavouriteList
                             {
-                                MovieTitle = e.MovieTitle,
+                                FavouriteID = e.FavouriteID,
+                                MovieId = e.MovieId,
+                                MovieTitle = ctx.Movie.Find(e.MovieId).MovieTitle,
                                 Check = e.Check
                             }
                     );
@@ -55,13 +61,14 @@ namespace MyMovie.Services
             {
                 var target =
                     ctx
-                    .Favourites
+                    .Favourite
                     .Single(e => e.FavouriteID == id && e.OwnerID == _userID);
                 return
                     new FavouriteDetail
                     {
                         FavouriteID = target.FavouriteID,
-                        MovieTitle = target.MovieTitle,
+                        MovieID = target.MovieId,
+                        MovieTitle = ctx.Movie.Find(target.MovieId).MovieTitle,
                         Check = target.Check
                     };
             }
@@ -72,9 +79,9 @@ namespace MyMovie.Services
             {
                 var target =
                     ctx
-                        .Favourites
+                        .Favourite
                         .Single(e => e.FavouriteID == favouriteID && e.OwnerID == _userID);
-                ctx.Favourites.Remove(target);
+                ctx.Favourite.Remove(target);
                 return ctx.SaveChanges() == 1;
             }
         }

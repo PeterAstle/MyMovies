@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using MyMovie.Services;
+using MyMovies.Models.FavoriteModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace MyMovies.Controllers
             return service;
         }
         [HttpPost]
-        public IHttpActionResult Post([FromBody] FavouriteCreate favouriteCreate)
+        public IHttpActionResult Post([FromBody] FavoriteCreate favouriteCreate)
         {
             if (favouriteCreate is null)
             {
@@ -45,7 +46,7 @@ namespace MyMovies.Controllers
                 return BadRequest();
             }
             var service = CreateFavouriteService();
-            var category = service.GetFavouriteByID(id);
+            var favourite = service.GetFavouriteByID(id);
             if (favourite is null)
             {
                 return NotFound();

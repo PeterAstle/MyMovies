@@ -32,7 +32,7 @@ namespace MyMovies.Data
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Favorite> Favorite { get; set; }
+        public DbSet<Favourite> Favourite { get; set; }
         public DbSet<Rating> Rating { get; set; }
         public DbSet<Movie> Movie { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

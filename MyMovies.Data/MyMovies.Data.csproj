@@ -84,8 +84,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FavouriteData.cs" />
+    <Compile Include="Favourite.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202104272009518_OverallMigration01.cs" />
+    <Compile Include="Migrations\202104272009518_OverallMigration01.Designer.cs">
+      <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rating.cs" />
@@ -93,6 +98,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202104272009518_OverallMigration01.resx">
+      <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

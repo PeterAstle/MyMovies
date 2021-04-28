@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FavoriteModels\FavouriteCreate.cs" />
     <Compile Include="FavoriteModels\FavouriteDetail.cs" />
     <Compile Include="FavoriteModels\FavouriteList.cs" />
     <Compile Include="MovieModels\MovieCreate.cs" />
