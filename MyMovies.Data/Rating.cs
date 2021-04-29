@@ -18,7 +18,8 @@ namespace MyMovies.Data
         [Required]
         public Guid OwnerId { get; set; }
         [Required]
-        public double Score { get; set; }
+        [Range(0,10)]
+        public int Score { get; set; }
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
         public DateTimeOffset ModifiedUtc { get; set; }
