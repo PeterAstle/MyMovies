@@ -21,6 +21,7 @@ namespace MyMovie.Services
             var target =
                 new Rating()
                 {
+                    MovieId = rating.MovieId,
                     OwnerId = _userId,
                     Score = rating.Score,
                     CreatedUtc = DateTimeOffset.UtcNow,
