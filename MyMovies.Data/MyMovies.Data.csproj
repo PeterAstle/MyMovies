@@ -98,6 +98,10 @@
     <Compile Include="Migrations\202104291340051_changedDoubleValue.Designer.cs">
       <DependentUpon>202104291340051_changedDoubleValue.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104291408077_fix.cs" />
+    <Compile Include="Migrations\202104291408077_fix.Designer.cs">
+      <DependentUpon>202104291408077_fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104291340051_changedDoubleValue.resx">
       <DependentUpon>202104291340051_changedDoubleValue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104291408077_fix.resx">
+      <DependentUpon>202104291408077_fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

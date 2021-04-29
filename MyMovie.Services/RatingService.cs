@@ -21,8 +21,9 @@ namespace MyMovie.Services
             var target =
                 new Rating()
                 {
-                    
+                    OwnerId = _userId,
                     Score = rating.Score,
+                    CreatedUtc = DateTimeOffset.UtcNow,
                     
                 };
             using (var ctx = new ApplicationDbContext())
