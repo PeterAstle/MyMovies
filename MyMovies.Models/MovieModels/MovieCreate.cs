@@ -28,7 +28,7 @@ namespace MyMovies.Models
         [Range(0, 10)]
         [Display(Name = "Rating 1-10, value of 0 will not create a rating.")]
 
-        public int Rating { get; set; }
+        public Nullable<int> Rating { get; set; }
 
         [Required]
         public bool WouldWatchAgain { get; set; }

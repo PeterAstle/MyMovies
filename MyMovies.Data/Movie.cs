@@ -31,7 +31,7 @@ namespace MyMovies.Data
 
         [Display(Name = "Rating 1-10, value of 0 will not create a rating.")]
 
-        public int Rating { get; set; }
+        public Nullable<int> Rating { get; set; }
 
         [Required]
         public MovieGenre Genre { get; set; }
