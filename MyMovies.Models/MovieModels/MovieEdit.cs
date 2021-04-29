@@ -22,7 +22,7 @@ namespace MyMovies.Models
 
         public bool IsFavorite { get; set; }
 
-        public double Rating { get; set; }
+        public int Rating { get; set; }
 
         public bool WouldWatchAgain { get; set; }
 
