@@ -34,10 +34,43 @@ namespace MyMovie.Services
                 CreatedUtc = DateTimeOffset.UtcNow
             };
 
+
+            var rating = new Rating()
+            {
+                MovieId = model.MovieId,
+                Movie = entity,
+                OwnerId = _userId,
+                Score = model.Rating,
+                CreatedUtc = DateTimeOffset.UtcNow,
+                MovieTitle = model.MovieTitle
+            };
+
+
+            var fav = new Favourite()
+            {
+
+                MovieId = model.MovieId,
+                IsFavorite = model.IsFavorite,
+                Movie = entity,
+                OwnerID = _userId
+
+            };
+
+            // Here the newly created movie, favourite, and rating will be added to their respective databases
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Movie.Add(entity);
-                return ctx.SaveChanges() == 1;
+
+                if (rating.Score != 0)
+                {
+                ctx.Rating.Add(rating);
+                }
+                if (fav.IsFavorite == true)
+                {
+                ctx.Favourite.Add(fav);
+                }
+                return ctx.SaveChanges() >=1;
             }
         }
 
@@ -101,7 +134,7 @@ namespace MyMovie.Services
                 var entity =
                     ctx
                     .Movie
-                    .Single(e => e.MovieTitle == title && e.OwnerId == _userId);
+                    .Single(e => e.MovieTitle.ToLower() == title.ToLower() && e.OwnerId == _userId);
 
                 return
                     new MovieDetail
@@ -124,6 +157,7 @@ namespace MyMovie.Services
 
         }
 
+
         public bool UpdateMovie(MovieEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -143,7 +177,18 @@ namespace MyMovie.Services
                 entity.MaturityRating = model.MaturityRating;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                return ctx.SaveChanges() == 1;
+                var rating =
+                    ctx
+                    .Rating
+                    .Single(e => e.MovieId == entity.MovieId && e.OwnerId == _userId);
+
+                rating.MovieTitle = entity.MovieTitle;
+                rating.Score = entity.Rating;
+                rating.ModifiedUtc = DateTimeOffset.UtcNow;
+
+
+
+                return ctx.SaveChanges() == 2;
 
             }
         }

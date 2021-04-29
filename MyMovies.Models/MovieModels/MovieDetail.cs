@@ -21,7 +21,7 @@ namespace MyMovies.Models
 
         public MaturityRating MaturityRating { get; set; }
 
-        public double Rating { get; set; }
+        public Nullable<int> Rating { get; set; }
 
         public bool WouldWatchAgain { get; set; }
 

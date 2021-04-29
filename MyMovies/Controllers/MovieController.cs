@@ -80,5 +80,29 @@ namespace MyMovies.Controllers
 
             return Ok();
         }
+
+        public IHttpActionResult DeleteById(int id)
+        {
+            var service = CreateMovieService();
+
+            if (!service.DeleteMovieById(id))
+            {
+                return InternalServerError();
+            }
+
+            return Ok();
+        }
+
+        public IHttpActionResult DeleteByTitle(string title)
+        {
+            var service = CreateMovieService();
+
+            if (!service.DeleteMovieByTitle(title))
+            {
+                return InternalServerError();
+            }
+
+            return Ok();
+        }
     }
 }
