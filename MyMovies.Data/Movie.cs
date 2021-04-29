@@ -29,8 +29,9 @@ namespace MyMovies.Data
        
         public virtual List<Rating> Ratings { get; set; } = new List<Rating>();
 
-        [Required]
-        public double Rating { get; set; }
+        [Display(Name = "Rating 1-10, value of 0 will not create a rating.")]
+
+        public int Rating { get; set; }
 
         [Required]
         public MovieGenre Genre { get; set; }
@@ -46,7 +47,7 @@ namespace MyMovies.Data
 
         public virtual List<Favourite> FavList { get; set; }
 
-        [Required]
+        
         public bool IsFavorite { get; set; }
 
         public Guid OwnerId { get; set; }

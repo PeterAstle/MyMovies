@@ -34,6 +34,7 @@ namespace MyMovie.Services
                 CreatedUtc = DateTimeOffset.UtcNow
             };
 
+
             var rating = new Rating()
             {
                 MovieId = model.MovieId,
@@ -44,9 +45,10 @@ namespace MyMovie.Services
                 MovieTitle = model.MovieTitle
             };
 
+
             var fav = new Favourite()
             {
-                
+
                 MovieId = model.MovieId,
                 IsFavorite = model.IsFavorite,
                 Movie = entity,
@@ -54,12 +56,21 @@ namespace MyMovie.Services
 
             };
 
+            // Here the newly created movie, favourite, and rating will be added to their respective databases
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Movie.Add(entity);
+
+                if (rating.Score != 0)
+                {
                 ctx.Rating.Add(rating);
+                }
+                if (fav.IsFavorite == true)
+                {
                 ctx.Favourite.Add(fav);
-                return ctx.SaveChanges() == 3;
+                }
+                return ctx.SaveChanges() >=1;
             }
         }
 
@@ -175,7 +186,7 @@ namespace MyMovie.Services
                 rating.Score = entity.Rating;
                 rating.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                
+
 
                 return ctx.SaveChanges() == 2;
 

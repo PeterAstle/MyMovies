@@ -90,6 +90,14 @@
     <Compile Include="Migrations\202104272009518_OverallMigration01.Designer.cs">
       <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104290243469_removedRequiredFields.cs" />
+    <Compile Include="Migrations\202104290243469_removedRequiredFields.Designer.cs">
+      <DependentUpon>202104290243469_removedRequiredFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104291340051_changedDoubleValue.cs" />
+    <Compile Include="Migrations\202104291340051_changedDoubleValue.Designer.cs">
+      <DependentUpon>202104291340051_changedDoubleValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +110,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104272009518_OverallMigration01.resx">
       <DependentUpon>202104272009518_OverallMigration01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104290243469_removedRequiredFields.resx">
+      <DependentUpon>202104290243469_removedRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104291340051_changedDoubleValue.resx">
+      <DependentUpon>202104291340051_changedDoubleValue.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

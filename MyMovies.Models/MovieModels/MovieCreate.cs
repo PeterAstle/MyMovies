@@ -25,8 +25,10 @@ namespace MyMovies.Models
         [Required]
         public MaturityRating MaturityRating { get; set; }
 
-        [Required, Range(0, 10)]
-        public double Rating { get; set; }
+        [Range(0, 10)]
+        [Display(Name = "Rating 1-10, value of 0 will not create a rating.")]
+
+        public int Rating { get; set; }
 
         [Required]
         public bool WouldWatchAgain { get; set; }
@@ -34,7 +36,6 @@ namespace MyMovies.Models
         [MaxLength(500, ErrorMessage ="Please limit your note to 500 characters or less.")]
         public string Note { get; set; }
 
-        [Required]
         public bool IsFavorite { get; set; }
 
     }
