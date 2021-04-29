@@ -166,7 +166,6 @@ namespace MyMovie.Services
                     ctx
                     .Movie
                     .Single(e => e.MovieId == model.MovieId && e.OwnerId == _userId);
-
                 entity.MovieTitle = model.MovieTitle;
                 entity.MovieDescription = model.MovieDescription;
                 entity.Genre = model.Genre;
@@ -177,21 +176,38 @@ namespace MyMovie.Services
                 entity.MaturityRating = model.MaturityRating;
                 entity.ModifiedUtc = DateTimeOffset.UtcNow;
 
-                var rating =
+                try
+                {
+                    var rating =
                     ctx
                     .Rating
                     .Single(e => e.MovieId == entity.MovieId && e.OwnerId == _userId);
+                    rating.MovieTitle = entity.MovieTitle;
+                    rating.Score = entity.Rating;
+                    rating.ModifiedUtc = DateTimeOffset.UtcNow;
+                }
+                catch (Exception)
+                {
 
-                rating.MovieTitle = entity.MovieTitle;
-                rating.Score = entity.Rating;
-                rating.ModifiedUtc = DateTimeOffset.UtcNow;
+                    var rating = new Rating()
+                    {
+                        MovieId = model.MovieId,
+                        Movie = entity,
+                        OwnerId = _userId,
+                        Score = model.Rating,
+                        CreatedUtc = DateTimeOffset.UtcNow,
+                        MovieTitle = model.MovieTitle
+                    };
 
+                    ctx.Rating.Add(rating);
 
-
-                return ctx.SaveChanges() == 2;
-
+                }
+                
+                
+                return ctx.SaveChanges() >= 1;
             }
         }
+
 
         public bool DeleteMovieById(int id)
         {
