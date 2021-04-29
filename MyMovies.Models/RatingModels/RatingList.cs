@@ -13,7 +13,7 @@ namespace MyMovies.Models.RatingModels
         //    public int RatingId { get; set; }
         //    public int MovieId { get; set; }
         public string MovieTitle { get; set; }
-        public double Score { get; set; }
+        public int Score { get; set; }
         //public DateTimeOffset CreatedUtc { get; set; }
         //public DateTimeOffset ModifiedUtc { get; set; }
     }

@@ -15,7 +15,7 @@ namespace MyMovies.Models.RatingModels
         public virtual Movie Movie { get; set; }
         [Required]
         [Range(0,10)]
-        public double Score { get; set; }
+        public int Score { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
         [Required]

@@ -16,7 +16,7 @@ namespace MyMovies.Models.RatingModels
         public int MovieId { get; set; }
         public virtual Movie Movie { get; set; }
         [Required]
-        public double Score { get; set; }
+        public int Score { get; set; }
         public DateTimeOffset ModifiedUtc { get; set; }
     }
 }
